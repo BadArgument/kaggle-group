@@ -1,8 +1,8 @@
 # 当前最好（越低越好，更新请及时修改）
-0.12269
+0.12183（原0.12269）
 
 # 代码简述
-具体用了什么方法，实现什么性能
+当前最优模型：stacking方案，岭回归学习器学习XGBoost、LightGBM、Lasso、ElasticNet、Ridge五种模型的最优组合
 
 # 运行代码
 库下载  
@@ -13,6 +13,8 @@ cd kaggle-prediction
 
 运行预测代码  
 python src/predict.py  
+
+stacking方案：运行stacking_method/house_prices_solution.py
 
 
 # 协作方式
