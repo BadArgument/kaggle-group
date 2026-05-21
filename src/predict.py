@@ -4,7 +4,7 @@ import numpy as np
 from sklearn.model_selection import KFold
 from sklearn.preprocessing import RobustScaler
 from sklearn.pipeline import make_pipeline
-from sklearn.linear_model import RidgeCV, LassoCV
+from sklearn.linear_model import RidgeCV, LassoCV, Ridge
 from xgboost import XGBRegressor
 from lightgbm import LGBMRegressor
 from catboost import CatBoostRegressor
@@ -69,8 +69,9 @@ lasso = make_pipeline(RobustScaler(), LassoCV(max_iter=int(1e7), alphas=[0.0001,
 
 # 构建 Stacking 融合模型
 stack_gen = StackingCVRegressor(regressors=(xgboost, lightgbm, catboost, ridge, lasso),
-                                meta_regressor=xgboost,
-                                use_features_in_secondary=True)
+                                meta_regressor=Ridge(alpha=5.0),
+                                use_features_in_secondary=True,
+                                cv=10)
 
 
 # 3. 训练与预测

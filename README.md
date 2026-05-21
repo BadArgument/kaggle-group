@@ -4,6 +4,9 @@
 # 代码简述
 当前最优模型：stacking方案，岭回归学习器学习XGBoost、LightGBM、Lasso、ElasticNet、Ridge五种模型的最优组合
 
+#### update
+`improved_stacking_method/`采用双层 Stacking 架构，集成 12 个异构基模型（含树模型、线性模型及 SVM），并利用 LightGBM 元模型结合原始重要特征进行非线性融合。同时引入 Optuna 超参数优化、伪标签半监督学习及自适应加权融合。
+
 # 运行代码
 库下载  
 pip install pandas numpy scikit-learn xgboost lightgbm catboost mlxtend  
@@ -16,6 +19,7 @@ python src/predict.py
 
 stacking方案：运行stacking_method/house_prices_solution.py
 
+分层stacking方案：运行improved_stacking_method/house_prices_solution_improved.py
 
 # 协作方式
 1、Fork目标项目  
